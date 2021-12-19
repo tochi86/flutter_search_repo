@@ -20,40 +20,42 @@ class RepoListPage extends ConsumerWidget {
       ),
       body: (errorMessage != null)
           ? Text(errorMessage.toString())
-          : Column(
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(
-                    decoration: const InputDecoration(
-                      hintText: '検索文字列を入力',
+          : SafeArea(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                        hintText: '検索文字列を入力',
+                      ),
+                      onSubmitted: (value) {
+                        viewModel.searchRepo(value);
+                      },
                     ),
-                    onSubmitted: (value) {
-                      viewModel.searchRepo(value);
-                    },
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: repoList.length,
-                    itemBuilder: (context, index) {
-                      final repo = repoList[index];
-                      return Card(
-                        child: ListTile(
-                          title: Text(repo.fullName),
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) {
-                                return RepoDetailPage(repo);
-                              }),
-                            );
-                          },
-                        ),
-                      );
-                    },
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: repoList.length,
+                      itemBuilder: (context, index) {
+                        final repo = repoList[index];
+                        return Card(
+                          child: ListTile(
+                            title: Text(repo.fullName),
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) {
+                                  return RepoDetailPage(repo);
+                                }),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
     );
   }
