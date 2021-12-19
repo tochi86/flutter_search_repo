@@ -20,6 +20,10 @@ class RepoListViewModel extends ChangeNotifier {
   String? get errorMessage => _errorMessage;
 
   searchRepo(String text) async {
+    if (text.isEmpty) {
+      return;
+    }
+
     _repoList = [];
     _errorMessage = null;
     notifyListeners();
