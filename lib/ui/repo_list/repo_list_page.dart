@@ -16,26 +16,35 @@ class RepoListPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('リポジトリ検索'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              viewModel.searchRepo('swift');
-            },
-          ),
-        ],
       ),
       body: (errorMessage != null)
           ? Text(errorMessage.toString())
-          : ListView.builder(
-              itemCount: repoList.length,
-              itemBuilder: (context, index) {
-                return Card(
-                  child: ListTile(
-                    title: Text(repoList[index].fullName),
+          : Column(
+              children: <Widget>[
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      hintText: '検索文字列を入力',
+                    ),
+                    onSubmitted: (value) {
+                      viewModel.searchRepo(value);
+                    },
                   ),
-                );
-              },
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: repoList.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          title: Text(repoList[index].fullName),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
     );
   }
