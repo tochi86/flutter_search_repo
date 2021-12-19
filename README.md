@@ -1,16 +1,21 @@
-# search_repo
+# flutter_search_repo
 
-A new Flutter project.
+GitHubのリポジトリを検索できるアプリです。
+iOSとAndroidで動きます。
 
-## Getting Started
+<img src="resources/demo.gif" width=320>
 
-This project is a starting point for a Flutter application.
+## アーキテクチャ
 
-A few resources to get you started if this is your first Flutter project:
+Androidアプリで推奨されている、MVVMアーキテクチャを参考に実装
+（日本語だと記事が古いので、英語版を参照ください）
+- [Guide to app architecture](https://developer.android.com/jetpack/guide)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src="https://developer.android.com/topic/libraries/architecture/images/mad-arch-overview-data.png" width=320>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 利用したライブラリ
+
+- [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
+- [freezed](https://pub.dev/packages/freezed)
+- [http](https://pub.dev/packages/http)
+- [mockito](https://pub.dev/packages/mockito)
