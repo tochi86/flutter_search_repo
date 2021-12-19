@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:search_repo/ui/repo_detail/repo_detail_page.dart';
 import 'package:search_repo/ui/repo_list/repo_list_view_model.dart';
 
 class RepoListPage extends ConsumerWidget {
@@ -36,9 +37,17 @@ class RepoListPage extends ConsumerWidget {
                   child: ListView.builder(
                     itemCount: repoList.length,
                     itemBuilder: (context, index) {
+                      final repo = repoList[index];
                       return Card(
                         child: ListTile(
-                          title: Text(repoList[index].fullName),
+                          title: Text(repo.fullName),
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) {
+                                return RepoDetailPage(repo);
+                              }),
+                            );
+                          },
                         ),
                       );
                     },
