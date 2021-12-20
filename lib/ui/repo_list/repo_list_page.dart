@@ -15,69 +15,72 @@ class RepoListPage extends ConsumerWidget {
     final viewModel = ref.read(repoListViewModelProvider);
     final repoList =
         ref.watch(repoListViewModelProvider.select((value) => value.repoList));
-    final errorMessage = ref
-        .watch(repoListViewModelProvider.select((value) => value.errorMessage));
     final searchText = ref.watch(_searchTextProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('リポジトリ検索'),
       ),
-      body: (errorMessage != null)
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(errorMessage.toString(), textAlign: TextAlign.center),
-                  ElevatedButton(
-                    child: const Text('リトライ'),
-                    onPressed: () {
-                      viewModel.searchRepo(searchText);
-                    },
-                  ),
-                ],
-              ),
-            )
-          : SafeArea(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child: TextField(
-                      decoration: const InputDecoration(
-                        hintText: '検索文字列を入力',
-                      ),
-                      onChanged: (value) {
-                        ref.read(_searchTextProvider.state).state = value;
-                      },
-                      onSubmitted: (value) {
-                        viewModel.searchRepo(value);
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: repoList.length,
-                      itemBuilder: (context, index) {
-                        final repo = repoList[index];
-                        return Card(
-                          child: ListTile(
-                            title: Text(repo.fullName),
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) {
-                                  return RepoDetailPage(repo);
-                                }),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(8),
+              child: TextField(
+                decoration: const InputDecoration(
+                  hintText: '検索文字列を入力',
+                ),
+                onChanged: (value) {
+                  ref.read(_searchTextProvider.state).state = value;
+                },
+                onSubmitted: (value) {
+                  viewModel.searchRepo(value);
+                },
               ),
             ),
+            Expanded(
+              child: repoList.when(
+                (value) => ListView.builder(
+                  itemCount: value.length,
+                  itemBuilder: (context, index) {
+                    final repo = value[index];
+                    return Card(
+                      child: ListTile(
+                        title: Text(repo.fullName),
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) {
+                              return RepoDetailPage(repo);
+                            }),
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                error: (String? message) => Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      if (message != null)
+                        Text(message, textAlign: TextAlign.center),
+                      ElevatedButton(
+                        child: const Text('リトライ'),
+                        onPressed: () {
+                          viewModel.searchRepo(searchText);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
