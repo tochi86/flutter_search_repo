@@ -3,10 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:search_repo/ui/repo_detail/repo_detail_page.dart';
 import 'package:search_repo/ui/repo_list/repo_list_view_model.dart';
 
-final _searchTextProvider = StateProvider.autoDispose((ref) {
-  return '';
-});
-
 class RepoListPage extends ConsumerWidget {
   const RepoListPage({Key? key}) : super(key: key);
 
@@ -15,7 +11,6 @@ class RepoListPage extends ConsumerWidget {
     final viewModel = ref.read(repoListViewModelProvider);
     final repoList =
         ref.watch(repoListViewModelProvider.select((value) => value.repoList));
-    final searchText = ref.watch(_searchTextProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,9 +25,6 @@ class RepoListPage extends ConsumerWidget {
                 decoration: const InputDecoration(
                   hintText: '検索文字列を入力',
                 ),
-                onChanged: (value) {
-                  ref.read(_searchTextProvider.state).state = value;
-                },
                 onSubmitted: (value) {
                   viewModel.searchRepo(value);
                 },
@@ -70,7 +62,7 @@ class RepoListPage extends ConsumerWidget {
                       ElevatedButton(
                         child: const Text('リトライ'),
                         onPressed: () {
-                          viewModel.searchRepo(searchText);
+                          viewModel.retry();
                         },
                       ),
                     ],

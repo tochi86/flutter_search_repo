@@ -17,11 +17,14 @@ class RepoListViewModel extends ChangeNotifier {
   Union<List<Repo>> _repoList = const Union([]);
   Union<List<Repo>> get repoList => _repoList;
 
+  String _searchText = '';
+
   searchRepo(String text) async {
-    if (text.isEmpty) {
+    if (text.isEmpty || text == _searchText) {
       return;
     }
 
+    _searchText = text;
     _repoList = const Union.loading();
     notifyListeners();
 
@@ -32,5 +35,11 @@ class RepoListViewModel extends ChangeNotifier {
       _repoList = Union.error(e.toString());
       notifyListeners();
     }
+  }
+
+  retry() {
+    final text = _searchText;
+    _searchText = '';
+    searchRepo(text);
   }
 }
