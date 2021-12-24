@@ -5,6 +5,21 @@ iOSとAndroidで動きます。
 
 <img src="resources/demo.gif" width=320>
 
+## 環境構築
+
+Flutterのバージョン管理にasdfを使用しています。
+まずは[asdfをインストール](https://asdf-vm.com/guide/getting-started.html)してください。
+
+プラグインを追加
+```
+asdf plugin add flutter
+```
+
+Flutterをインストール
+```
+asdf install
+```
+
 ## アーキテクチャ
 
 Androidアプリで推奨されている、MVVMアーキテクチャを参考に実装
