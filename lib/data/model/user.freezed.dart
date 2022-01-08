@@ -152,7 +152,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_User implements _User {
-  _$_User(
+  const _$_User(
       {@_UserIdConverter() required this.id,
       required this.login,
       @JsonKey(name: 'avatar_url') required this.avatarUrl});
@@ -202,7 +202,7 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  factory _User(
+  const factory _User(
       {@_UserIdConverter() required UserId id,
       required String login,
       @JsonKey(name: 'avatar_url') required String avatarUrl}) = _$_User;
@@ -305,7 +305,7 @@ class __$UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UserId implements _UserId {
-  _$_UserId({required this.value});
+  const _$_UserId({required this.value});
 
   @override
   final int value;
@@ -334,7 +334,7 @@ class _$_UserId implements _UserId {
 }
 
 abstract class _UserId implements UserId {
-  factory _UserId({required int value}) = _$_UserId;
+  const factory _UserId({required int value}) = _$_UserId;
 
   @override
   int get value;

@@ -7,7 +7,7 @@ part 'repo.g.dart';
 
 @freezed
 class Repo with _$Repo {
-  factory Repo({
+  const factory Repo({
     @_RepoIdConverter() required final RepoId id,
     required final String name,
     @JsonKey(name: 'full_name') required final String fullName,
@@ -20,7 +20,7 @@ class Repo with _$Repo {
 
 @freezed
 class RepoId with _$RepoId {
-  factory RepoId({required final int value}) = _RepoId;
+  const factory RepoId({required final int value}) = _RepoId;
 }
 
 class _RepoIdConverter implements JsonConverter<RepoId, int> {

@@ -51,6 +51,6 @@ void main() {
 
     expect(response.totalCount, 225364);
     expect(response.items.length, 3);
-    expect(response.items.first.id, RepoId(value: 44838949));
+    expect(response.items.first.id, const RepoId(value: 44838949));
   });
 }

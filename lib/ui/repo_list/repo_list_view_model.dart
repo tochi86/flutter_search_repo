@@ -9,7 +9,7 @@ final repoListViewModelProvider =
 
 class RepoListViewModel extends StateNotifier<RepoListUiState> {
   final Reader _reader;
-  RepoListViewModel(this._reader) : super(RepoListUiState());
+  RepoListViewModel(this._reader) : super(const RepoListUiState());
 
   late final RepoRepository _repository = _reader(repoRepositoryProvider);
 

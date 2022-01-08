@@ -104,7 +104,7 @@ class __$RepoListUiStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RepoListUiState implements _RepoListUiState {
-  _$_RepoListUiState({this.repoList = const AsyncData([])});
+  const _$_RepoListUiState({this.repoList = const AsyncData([])});
 
   @JsonKey()
   @override
@@ -134,7 +134,7 @@ class _$_RepoListUiState implements _RepoListUiState {
 }
 
 abstract class _RepoListUiState implements RepoListUiState {
-  factory _RepoListUiState({AsyncValue<List<Repo>> repoList}) =
+  const factory _RepoListUiState({AsyncValue<List<Repo>> repoList}) =
       _$_RepoListUiState;
 
   @override

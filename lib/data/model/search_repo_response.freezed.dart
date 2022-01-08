@@ -127,7 +127,7 @@ class __$SearchRepoResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SearchRepoResponse implements _SearchRepoResponse {
-  _$_SearchRepoResponse(
+  const _$_SearchRepoResponse(
       {@JsonKey(name: 'total_count') required this.totalCount,
       required this.items});
 
@@ -173,7 +173,7 @@ class _$_SearchRepoResponse implements _SearchRepoResponse {
 }
 
 abstract class _SearchRepoResponse implements SearchRepoResponse {
-  factory _SearchRepoResponse(
+  const factory _SearchRepoResponse(
       {@JsonKey(name: 'total_count') required int totalCount,
       required List<Repo> items}) = _$_SearchRepoResponse;
 

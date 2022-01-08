@@ -193,7 +193,7 @@ class __$RepoCopyWithImpl<$Res> extends _$RepoCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Repo implements _Repo {
-  _$_Repo(
+  const _$_Repo(
       {@_RepoIdConverter() required this.id,
       required this.name,
       @JsonKey(name: 'full_name') required this.fullName,
@@ -255,7 +255,7 @@ class _$_Repo implements _Repo {
 }
 
 abstract class _Repo implements Repo {
-  factory _Repo(
+  const factory _Repo(
       {@_RepoIdConverter() required RepoId id,
       required String name,
       @JsonKey(name: 'full_name') required String fullName,
@@ -365,7 +365,7 @@ class __$RepoIdCopyWithImpl<$Res> extends _$RepoIdCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RepoId implements _RepoId {
-  _$_RepoId({required this.value});
+  const _$_RepoId({required this.value});
 
   @override
   final int value;
@@ -394,7 +394,7 @@ class _$_RepoId implements _RepoId {
 }
 
 abstract class _RepoId implements RepoId {
-  factory _RepoId({required int value}) = _$_RepoId;
+  const factory _RepoId({required int value}) = _$_RepoId;
 
   @override
   int get value;

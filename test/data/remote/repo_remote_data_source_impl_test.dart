@@ -33,7 +33,7 @@ void main() {
             Uri.parse('https://api.github.com/search/repositories?q=swift')))
         .called(1);
     expect(repos.length, 3);
-    expect(repos.first.id, RepoId(value: 44838949));
+    expect(repos.first.id, const RepoId(value: 44838949));
   });
 
   test('日本語で検索すると、正しくエンコーディングされたクエリが送信される', () async {

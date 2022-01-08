@@ -8,7 +8,7 @@ part 'search_repo_response.g.dart';
 
 @freezed
 class SearchRepoResponse with _$SearchRepoResponse {
-  factory SearchRepoResponse({
+  const factory SearchRepoResponse({
     @JsonKey(name: 'total_count') required final int totalCount,
     required final List<Repo> items,
   }) = _SearchRepoResponse;

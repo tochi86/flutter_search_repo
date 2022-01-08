@@ -6,7 +6,7 @@ part 'repo_list_ui_state.freezed.dart';
 
 @freezed
 class RepoListUiState with _$RepoListUiState {
-  factory RepoListUiState({
+  const factory RepoListUiState({
     @Default(AsyncData([])) final AsyncValue<List<Repo>> repoList,
   }) = _RepoListUiState;
 }

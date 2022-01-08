@@ -5,7 +5,7 @@ part 'user.g.dart';
 
 @freezed
 class User with _$User {
-  factory User({
+  const factory User({
     @_UserIdConverter() required final UserId id,
     required final String login,
     @JsonKey(name: 'avatar_url') required final String avatarUrl,
@@ -16,7 +16,7 @@ class User with _$User {
 
 @freezed
 class UserId with _$UserId {
-  factory UserId({required final int value}) = _UserId;
+  const factory UserId({required final int value}) = _UserId;
 }
 
 class _UserIdConverter implements JsonConverter<UserId, int> {
