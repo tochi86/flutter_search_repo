@@ -11,8 +11,9 @@ import 'package:search_repo/data/remote/repo_remote_data_source_impl.dart';
 class _MockHttpClient extends Mock implements HttpClient {}
 
 void main() {
-  late _MockHttpClient httpClient;
   late RepoRemoteDataSource dataSource;
+
+  late _MockHttpClient httpClient;
 
   setUpAll(() {
     registerFallbackValue(Uri());
