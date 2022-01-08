@@ -11,6 +11,10 @@ class RepoListViewModel extends StateNotifier<RepoListUiState> {
   final Reader _reader;
   RepoListViewModel(this._reader) : super(const RepoListUiState());
 
+  RepoListViewModel.mock(this._reader,
+      [RepoListUiState state = const RepoListUiState()])
+      : super(state);
+
   late final RepoRepository _repository = _reader(repoRepositoryProvider);
 
   String _searchText = '';
