@@ -7,13 +7,13 @@ part of 'user.dart';
 // **************************************************************************
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
-      id: json['id'] as int,
+      id: const _UserIdConverter().fromJson(json['id'] as int),
       login: json['login'] as String,
       avatarUrl: json['avatar_url'] as String,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
-      'id': instance.id,
+      'id': const _UserIdConverter().toJson(instance.id),
       'login': instance.login,
       'avatar_url': instance.avatarUrl,
     };

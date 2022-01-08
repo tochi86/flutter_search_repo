@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:search_repo/data/model/repo.dart';
+import 'package:search_repo/data/model/user.dart';
 
 void main() {
   test('Repo fromJson', () {
@@ -21,10 +22,10 @@ void main() {
 
     final repo = Repo.fromJson(json);
 
-    expect(repo.id, 44838949);
+    expect(repo.id, RepoId(value: 44838949));
     expect(repo.name, 'swift');
     expect(repo.fullName, 'apple/swift');
     expect(repo.stargazersCount, 58245);
-    expect(repo.owner.id, 10639145);
+    expect(repo.owner.id, UserId(value: 10639145));
   });
 }

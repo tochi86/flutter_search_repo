@@ -7,7 +7,7 @@ part of 'repo.dart';
 // **************************************************************************
 
 _$_Repo _$$_RepoFromJson(Map<String, dynamic> json) => _$_Repo(
-      id: json['id'] as int,
+      id: const _RepoIdConverter().fromJson(json['id'] as int),
       name: json['name'] as String,
       fullName: json['full_name'] as String,
       stargazersCount: json['stargazers_count'] as int,
@@ -15,7 +15,7 @@ _$_Repo _$$_RepoFromJson(Map<String, dynamic> json) => _$_Repo(
     );
 
 Map<String, dynamic> _$$_RepoToJson(_$_Repo instance) => <String, dynamic>{
-      'id': instance.id,
+      'id': const _RepoIdConverter().toJson(instance.id),
       'name': instance.name,
       'full_name': instance.fullName,
       'stargazers_count': instance.stargazersCount,

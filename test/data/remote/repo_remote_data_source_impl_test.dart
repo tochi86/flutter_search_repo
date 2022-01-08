@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:riverpod/riverpod.dart';
+import 'package:search_repo/data/model/repo.dart';
 import 'package:search_repo/data/remote/http_client/http_client.dart';
 import 'package:search_repo/data/remote/http_client/http_client_impl.dart';
 import 'package:search_repo/data/remote/http_client/response.dart';
@@ -29,7 +30,7 @@ void main() {
     verify(mockHttpClient
         .get(Uri.parse('https://api.github.com/search/repositories?q=swift')));
     expect(repos.length, 3);
-    expect(repos.first.id, 44838949);
+    expect(repos.first.id, RepoId(value: 44838949));
   });
 
   test('日本語で検索すると、正しくエンコーディングされたクエリが送信される', () async {

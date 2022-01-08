@@ -15,7 +15,7 @@ void main() {
 
     final user = User.fromJson(json);
 
-    expect(user.id, 10639145);
+    expect(user.id, UserId(value: 10639145));
     expect(user.login, 'apple');
     expect(
         user.avatarUrl, 'https://avatars.githubusercontent.com/u/10639145?v=4');

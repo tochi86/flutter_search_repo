@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:search_repo/data/model/repo.dart';
 import 'package:search_repo/data/model/search_repo_response.dart';
 
 void main() {
@@ -50,6 +51,6 @@ void main() {
 
     expect(response.totalCount, 225364);
     expect(response.items.length, 3);
-    expect(response.items.first.id, 44838949);
+    expect(response.items.first.id, RepoId(value: 44838949));
   });
 }
