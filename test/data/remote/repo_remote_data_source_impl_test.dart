@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:search_repo/data/model/repo.dart';
 import 'package:search_repo/data/remote/http_client/http_client.dart';
@@ -9,39 +8,44 @@ import 'package:search_repo/data/remote/http_client/response.dart';
 import 'package:search_repo/data/remote/repo_remote_data_source.dart';
 import 'package:search_repo/data/remote/repo_remote_data_source_impl.dart';
 
-import 'repo_remote_data_source_impl_test.mocks.dart';
+class MockHttpClient extends Mock implements HttpClient {}
 
-@GenerateMocks([HttpClient])
 void main() {
-  late MockHttpClient mockHttpClient;
+  late MockHttpClient httpClient;
   late RepoRemoteDataSource dataSource;
 
+  setUpAll(() {
+    registerFallbackValue(Uri());
+  });
+
   setUp(() {
-    mockHttpClient = MockHttpClient();
+    httpClient = MockHttpClient();
     final container = ProviderContainer(
-      overrides: [httpClientProvider.overrideWithValue(mockHttpClient)],
+      overrides: [httpClientProvider.overrideWithValue(httpClient)],
     );
     dataSource = container.read(repoRemoteDataSourceProvider);
   });
 
   test('英語で検索すると、正しいクエリが送信され、正しい値が返ってくる', () async {
-    when(mockHttpClient.get(any)).thenAnswer((_) async => _response200());
+    when(() => httpClient.get(any())).thenAnswer((_) async => _response200());
     final repos = await dataSource.search(query: 'swift');
-    verify(mockHttpClient
-        .get(Uri.parse('https://api.github.com/search/repositories?q=swift')));
+    verify(() => httpClient.get(
+            Uri.parse('https://api.github.com/search/repositories?q=swift')))
+        .called(1);
     expect(repos.length, 3);
     expect(repos.first.id, RepoId(value: 44838949));
   });
 
   test('日本語で検索すると、正しくエンコーディングされたクエリが送信される', () async {
-    when(mockHttpClient.get(any)).thenAnswer((_) async => _response200());
-    final repos = await dataSource.search(query: 'あいうえお');
-    verify(mockHttpClient.get(Uri.parse(
-        'https://api.github.com/search/repositories?q=%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A')));
+    when(() => httpClient.get(any())).thenAnswer((_) async => _response200());
+    await dataSource.search(query: 'あいうえお');
+    verify(() => httpClient.get(Uri.parse(
+            'https://api.github.com/search/repositories?q=%E3%81%82%E3%81%84%E3%81%86%E3%81%88%E3%81%8A')))
+        .called(1);
   });
 
   test('404エラーが返ってきた時は、例外が投げられる', () async {
-    when(mockHttpClient.get(any)).thenAnswer((_) async => _response404());
+    when(() => httpClient.get(any())).thenAnswer((_) async => _response404());
     expect(dataSource.search(query: 'query'), throwsException);
   });
 }

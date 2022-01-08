@@ -33,4 +33,4 @@ Androidアプリで推奨されている、MVVMアーキテクチャを参考に
 - [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
 - [freezed](https://pub.dev/packages/freezed)
 - [http](https://pub.dev/packages/http)
-- [mockito](https://pub.dev/packages/mockito)
+- [mocktail](https://pub.dev/packages/mocktail)
