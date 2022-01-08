@@ -15,7 +15,7 @@ class RepoListViewModel extends StateNotifier<RepoListUiState> {
 
   String _searchText = '';
 
-  void searchRepo(String text) async {
+  Future<void> searchRepo(String text) async {
     if (text.isEmpty || text == _searchText) {
       return;
     }
@@ -32,9 +32,9 @@ class RepoListViewModel extends StateNotifier<RepoListUiState> {
     }
   }
 
-  void retry() {
+  Future<void> retry() async {
     final text = _searchText;
     _searchText = '';
-    searchRepo(text);
+    await searchRepo(text);
   }
 }
