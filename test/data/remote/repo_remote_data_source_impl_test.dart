@@ -8,10 +8,10 @@ import 'package:search_repo/data/remote/http_client/response.dart';
 import 'package:search_repo/data/remote/repo_remote_data_source.dart';
 import 'package:search_repo/data/remote/repo_remote_data_source_impl.dart';
 
-class MockHttpClient extends Mock implements HttpClient {}
+class _MockHttpClient extends Mock implements HttpClient {}
 
 void main() {
-  late MockHttpClient httpClient;
+  late _MockHttpClient httpClient;
   late RepoRemoteDataSource dataSource;
 
   setUpAll(() {
@@ -19,7 +19,7 @@ void main() {
   });
 
   setUp(() {
-    httpClient = MockHttpClient();
+    httpClient = _MockHttpClient();
     final container = ProviderContainer(
       overrides: [httpClientProvider.overrideWithValue(httpClient)],
     );
