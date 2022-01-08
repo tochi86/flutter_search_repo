@@ -8,9 +8,9 @@ class RepoListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final viewModel = ref.read(repoListViewModelProvider);
+    final viewModel = ref.read(repoListViewModelProvider.notifier);
     final repoList =
-        ref.watch(repoListViewModelProvider.select((value) => value.repoList));
+        ref.watch(repoListViewModelProvider.select((state) => state.repoList));
 
     return Scaffold(
       appBar: AppBar(
@@ -19,7 +19,7 @@ class RepoListPage extends ConsumerWidget {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Container(
+            Padding(
               padding: const EdgeInsets.all(8),
               child: TextField(
                 decoration: const InputDecoration(
@@ -32,7 +32,7 @@ class RepoListPage extends ConsumerWidget {
             ),
             Expanded(
               child: repoList.when(
-                (value) => ListView.builder(
+                data: (value) => ListView.builder(
                   itemCount: value.length,
                   itemBuilder: (context, index) {
                     final repo = value[index];
@@ -50,15 +50,11 @@ class RepoListPage extends ConsumerWidget {
                     );
                   },
                 ),
-                loading: () => const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                error: (String? message) => Center(
+                error: (e, s) => Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      if (message != null)
-                        Text(message, textAlign: TextAlign.center),
+                      Text(e.toString(), textAlign: TextAlign.center),
                       ElevatedButton(
                         child: const Text('リトライ'),
                         onPressed: () {
@@ -67,6 +63,9 @@ class RepoListPage extends ConsumerWidget {
                       ),
                     ],
                   ),
+                ),
+                loading: () => const Center(
+                  child: CircularProgressIndicator.adaptive(),
                 ),
               ),
             ),

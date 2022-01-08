@@ -1,43 +1,38 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:search_repo/data/model/repo.dart';
 import 'package:search_repo/data/repository/repo_repository.dart';
 import 'package:search_repo/data/repository/repo_repository_impl.dart';
-import 'package:search_repo/ui/common/union.dart';
+import 'package:search_repo/ui/repo_list/repo_list_ui_state.dart';
 
 final repoListViewModelProvider =
-    ChangeNotifierProvider.autoDispose((ref) => RepoListViewModel(ref.read));
+    StateNotifierProvider.autoDispose<RepoListViewModel, RepoListUiState>(
+        (ref) => RepoListViewModel(ref.read));
 
-class RepoListViewModel extends ChangeNotifier {
+class RepoListViewModel extends StateNotifier<RepoListUiState> {
   final Reader _reader;
-  RepoListViewModel(this._reader);
+  RepoListViewModel(this._reader) : super(RepoListUiState());
 
   late final RepoRepository _repository = _reader(repoRepositoryProvider);
 
-  Union<List<Repo>> _repoList = const Union([]);
-  Union<List<Repo>> get repoList => _repoList;
-
   String _searchText = '';
 
-  searchRepo(String text) async {
+  void searchRepo(String text) async {
     if (text.isEmpty || text == _searchText) {
       return;
     }
 
     _searchText = text;
-    _repoList = const Union.loading();
-    notifyListeners();
+    state = state.copyWith(repoList: const AsyncLoading());
 
     try {
-      _repoList = Union(await _repository.search(query: text));
-      notifyListeners();
-    } catch (e) {
-      _repoList = Union.error(e.toString());
-      notifyListeners();
+      state = state.copyWith(
+        repoList: AsyncData(await _repository.search(query: text)),
+      );
+    } on Exception catch (e) {
+      state = state.copyWith(repoList: AsyncError(e));
     }
   }
 
-  retry() {
+  void retry() {
     final text = _searchText;
     _searchText = '';
     searchRepo(text);
