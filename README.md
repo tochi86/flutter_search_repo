@@ -23,8 +23,7 @@ asdf install
 ## アーキテクチャ
 
 Androidアプリで推奨されている、MVVMアーキテクチャを参考に実装
-（日本語だと記事が古いので、英語版を参照ください）
-- [Guide to app architecture](https://developer.android.com/jetpack/guide)
+- [アプリ アーキテクチャ ガイド](https://developer.android.com/jetpack/guide?hl=ja)
 
 <img src="https://developer.android.com/topic/libraries/architecture/images/mad-arch-overview-data.png" width=320>
 
