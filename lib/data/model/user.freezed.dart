@@ -24,7 +24,7 @@ class _$UserTearOff {
   _User call(
       {@_UserIdConverter() required UserId id,
       required String login,
-      @JsonKey(name: 'avatar_url') required String avatarUrl}) {
+      required String avatarUrl}) {
     return _User(
       id: id,
       login: login,
@@ -45,7 +45,6 @@ mixin _$User {
   @_UserIdConverter()
   UserId get id => throw _privateConstructorUsedError;
   String get login => throw _privateConstructorUsedError;
-  @JsonKey(name: 'avatar_url')
   String get avatarUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -57,10 +56,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call(
-      {@_UserIdConverter() UserId id,
-      String login,
-      @JsonKey(name: 'avatar_url') String avatarUrl});
+  $Res call({@_UserIdConverter() UserId id, String login, String avatarUrl});
 
   $UserIdCopyWith<$Res> get id;
 }
@@ -108,10 +104,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {@_UserIdConverter() UserId id,
-      String login,
-      @JsonKey(name: 'avatar_url') String avatarUrl});
+  $Res call({@_UserIdConverter() UserId id, String login, String avatarUrl});
 
   @override
   $UserIdCopyWith<$Res> get id;
@@ -155,7 +148,7 @@ class _$_User implements _User {
   const _$_User(
       {@_UserIdConverter() required this.id,
       required this.login,
-      @JsonKey(name: 'avatar_url') required this.avatarUrl});
+      required this.avatarUrl});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -165,7 +158,6 @@ class _$_User implements _User {
   @override
   final String login;
   @override
-  @JsonKey(name: 'avatar_url')
   final String avatarUrl;
 
   @override
@@ -205,7 +197,7 @@ abstract class _User implements User {
   const factory _User(
       {@_UserIdConverter() required UserId id,
       required String login,
-      @JsonKey(name: 'avatar_url') required String avatarUrl}) = _$_User;
+      required String avatarUrl}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -215,7 +207,6 @@ abstract class _User implements User {
   @override
   String get login;
   @override
-  @JsonKey(name: 'avatar_url')
   String get avatarUrl;
   @override
   @JsonKey(ignore: true)

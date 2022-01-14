@@ -24,8 +24,8 @@ class _$RepoTearOff {
   _Repo call(
       {@_RepoIdConverter() required RepoId id,
       required String name,
-      @JsonKey(name: 'full_name') required String fullName,
-      @JsonKey(name: 'stargazers_count') required int stargazersCount,
+      required String fullName,
+      required int stargazersCount,
       required User owner}) {
     return _Repo(
       id: id,
@@ -49,9 +49,7 @@ mixin _$Repo {
   @_RepoIdConverter()
   RepoId get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'full_name')
   String get fullName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'stargazers_count')
   int get stargazersCount => throw _privateConstructorUsedError;
   User get owner => throw _privateConstructorUsedError;
 
@@ -67,8 +65,8 @@ abstract class $RepoCopyWith<$Res> {
   $Res call(
       {@_RepoIdConverter() RepoId id,
       String name,
-      @JsonKey(name: 'full_name') String fullName,
-      @JsonKey(name: 'stargazers_count') int stargazersCount,
+      String fullName,
+      int stargazersCount,
       User owner});
 
   $RepoIdCopyWith<$Res> get id;
@@ -138,8 +136,8 @@ abstract class _$RepoCopyWith<$Res> implements $RepoCopyWith<$Res> {
   $Res call(
       {@_RepoIdConverter() RepoId id,
       String name,
-      @JsonKey(name: 'full_name') String fullName,
-      @JsonKey(name: 'stargazers_count') int stargazersCount,
+      String fullName,
+      int stargazersCount,
       User owner});
 
   @override
@@ -196,8 +194,8 @@ class _$_Repo implements _Repo {
   const _$_Repo(
       {@_RepoIdConverter() required this.id,
       required this.name,
-      @JsonKey(name: 'full_name') required this.fullName,
-      @JsonKey(name: 'stargazers_count') required this.stargazersCount,
+      required this.fullName,
+      required this.stargazersCount,
       required this.owner});
 
   factory _$_Repo.fromJson(Map<String, dynamic> json) => _$$_RepoFromJson(json);
@@ -208,10 +206,8 @@ class _$_Repo implements _Repo {
   @override
   final String name;
   @override
-  @JsonKey(name: 'full_name')
   final String fullName;
   @override
-  @JsonKey(name: 'stargazers_count')
   final int stargazersCount;
   @override
   final User owner;
@@ -258,8 +254,8 @@ abstract class _Repo implements Repo {
   const factory _Repo(
       {@_RepoIdConverter() required RepoId id,
       required String name,
-      @JsonKey(name: 'full_name') required String fullName,
-      @JsonKey(name: 'stargazers_count') required int stargazersCount,
+      required String fullName,
+      required int stargazersCount,
       required User owner}) = _$_Repo;
 
   factory _Repo.fromJson(Map<String, dynamic> json) = _$_Repo.fromJson;
@@ -270,10 +266,8 @@ abstract class _Repo implements Repo {
   @override
   String get name;
   @override
-  @JsonKey(name: 'full_name')
   String get fullName;
   @override
-  @JsonKey(name: 'stargazers_count')
   int get stargazersCount;
   @override
   User get owner;

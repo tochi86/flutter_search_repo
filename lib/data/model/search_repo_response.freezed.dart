@@ -22,8 +22,7 @@ class _$SearchRepoResponseTearOff {
   const _$SearchRepoResponseTearOff();
 
   _SearchRepoResponse call(
-      {@JsonKey(name: 'total_count') required int totalCount,
-      required List<Repo> items}) {
+      {required int totalCount, required List<Repo> items}) {
     return _SearchRepoResponse(
       totalCount: totalCount,
       items: items,
@@ -40,7 +39,6 @@ const $SearchRepoResponse = _$SearchRepoResponseTearOff();
 
 /// @nodoc
 mixin _$SearchRepoResponse {
-  @JsonKey(name: 'total_count')
   int get totalCount => throw _privateConstructorUsedError;
   List<Repo> get items => throw _privateConstructorUsedError;
 
@@ -55,7 +53,7 @@ abstract class $SearchRepoResponseCopyWith<$Res> {
   factory $SearchRepoResponseCopyWith(
           SearchRepoResponse value, $Res Function(SearchRepoResponse) then) =
       _$SearchRepoResponseCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: 'total_count') int totalCount, List<Repo> items});
+  $Res call({int totalCount, List<Repo> items});
 }
 
 /// @nodoc
@@ -92,7 +90,7 @@ abstract class _$SearchRepoResponseCopyWith<$Res>
           _SearchRepoResponse value, $Res Function(_SearchRepoResponse) then) =
       __$SearchRepoResponseCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: 'total_count') int totalCount, List<Repo> items});
+  $Res call({int totalCount, List<Repo> items});
 }
 
 /// @nodoc
@@ -127,15 +125,12 @@ class __$SearchRepoResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SearchRepoResponse implements _SearchRepoResponse {
-  const _$_SearchRepoResponse(
-      {@JsonKey(name: 'total_count') required this.totalCount,
-      required this.items});
+  const _$_SearchRepoResponse({required this.totalCount, required this.items});
 
   factory _$_SearchRepoResponse.fromJson(Map<String, dynamic> json) =>
       _$$_SearchRepoResponseFromJson(json);
 
   @override
-  @JsonKey(name: 'total_count')
   final int totalCount;
   @override
   final List<Repo> items;
@@ -174,14 +169,13 @@ class _$_SearchRepoResponse implements _SearchRepoResponse {
 
 abstract class _SearchRepoResponse implements SearchRepoResponse {
   const factory _SearchRepoResponse(
-      {@JsonKey(name: 'total_count') required int totalCount,
+      {required int totalCount,
       required List<Repo> items}) = _$_SearchRepoResponse;
 
   factory _SearchRepoResponse.fromJson(Map<String, dynamic> json) =
       _$_SearchRepoResponse.fromJson;
 
   @override
-  @JsonKey(name: 'total_count')
   int get totalCount;
   @override
   List<Repo> get items;

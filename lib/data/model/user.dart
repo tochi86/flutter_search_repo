@@ -8,7 +8,7 @@ class User with _$User {
   const factory User({
     @_UserIdConverter() required UserId id,
     required String login,
-    @JsonKey(name: 'avatar_url') required String avatarUrl,
+    required String avatarUrl,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

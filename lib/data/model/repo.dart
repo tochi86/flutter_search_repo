@@ -10,8 +10,8 @@ class Repo with _$Repo {
   const factory Repo({
     @_RepoIdConverter() required RepoId id,
     required String name,
-    @JsonKey(name: 'full_name') required String fullName,
-    @JsonKey(name: 'stargazers_count') required int stargazersCount,
+    required String fullName,
+    required int stargazersCount,
     required User owner,
   }) = _Repo;
 
