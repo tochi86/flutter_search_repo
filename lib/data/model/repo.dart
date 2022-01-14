@@ -8,11 +8,11 @@ part 'repo.g.dart';
 @freezed
 class Repo with _$Repo {
   const factory Repo({
-    @_RepoIdConverter() required final RepoId id,
-    required final String name,
-    @JsonKey(name: 'full_name') required final String fullName,
-    @JsonKey(name: 'stargazers_count') required final int stargazersCount,
-    required final User owner,
+    @_RepoIdConverter() required RepoId id,
+    required String name,
+    @JsonKey(name: 'full_name') required String fullName,
+    @JsonKey(name: 'stargazers_count') required int stargazersCount,
+    required User owner,
   }) = _Repo;
 
   factory Repo.fromJson(Map<String, dynamic> json) => _$RepoFromJson(json);
@@ -20,7 +20,7 @@ class Repo with _$Repo {
 
 @freezed
 class RepoId with _$RepoId {
-  const factory RepoId({required final int value}) = _RepoId;
+  const factory RepoId({required int value}) = _RepoId;
 }
 
 class _RepoIdConverter implements JsonConverter<RepoId, int> {

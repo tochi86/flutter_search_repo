@@ -6,9 +6,9 @@ part 'user.g.dart';
 @freezed
 class User with _$User {
   const factory User({
-    @_UserIdConverter() required final UserId id,
-    required final String login,
-    @JsonKey(name: 'avatar_url') required final String avatarUrl,
+    @_UserIdConverter() required UserId id,
+    required String login,
+    @JsonKey(name: 'avatar_url') required String avatarUrl,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
@@ -16,7 +16,7 @@ class User with _$User {
 
 @freezed
 class UserId with _$UserId {
-  const factory UserId({required final int value}) = _UserId;
+  const factory UserId({required int value}) = _UserId;
 }
 
 class _UserIdConverter implements JsonConverter<UserId, int> {
