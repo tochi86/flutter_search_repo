@@ -1,5 +1,7 @@
 # flutter_search_repo
 
+![test workflow](https://github.com/tochi86/flutter_search_repo/actions/workflows/test.yaml/badge.svg)
+
 GitHubのリポジトリを検索できるアプリです。
 iOSとAndroidで動きます。
 
