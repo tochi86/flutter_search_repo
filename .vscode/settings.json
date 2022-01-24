@@ -1,3 +1,9 @@
 {
-  "dart.flutterSdkPath": "~/.asdf/installs/flutter/2.8.1-stable"
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true
+  }
 }

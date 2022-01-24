@@ -7,17 +7,15 @@ iOSとAndroidで動きます。
 
 ## 環境構築
 
-Flutterのバージョン管理にasdfを使用しています。
-まずは[asdfをインストール](https://asdf-vm.com/guide/getting-started.html)してください。
-
-プラグインを追加
+FVMをインストール
 ```
-asdf plugin add flutter
+brew tap leoafarias/fvm
+brew install fvm
 ```
 
-Flutterをインストール
+Flutter SDKをインストール
 ```
-asdf install
+fvm install
 ```
 
 ## アーキテクチャ
