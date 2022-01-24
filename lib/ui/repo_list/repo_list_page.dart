@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:search_repo/gen/l10n.dart';
 import 'package:search_repo/ui/repo_detail/repo_detail_page.dart';
 import 'package:search_repo/ui/repo_list/repo_list_view_model.dart';
 
@@ -14,7 +15,7 @@ class RepoListPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('リポジトリ検索'),
+        title: Text(L10n.of(context)!.repoListPageTitle),
       ),
       body: SafeArea(
         child: Column(
@@ -22,8 +23,8 @@ class RepoListPage extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(8),
               child: TextField(
-                decoration: const InputDecoration(
-                  hintText: '検索文字列を入力',
+                decoration: InputDecoration(
+                  hintText: L10n.of(context)!.repoListPageHintText,
                 ),
                 onSubmitted: (value) {
                   viewModel.searchRepo(value);
@@ -56,7 +57,7 @@ class RepoListPage extends ConsumerWidget {
                     children: <Widget>[
                       Text(e.toString(), textAlign: TextAlign.center),
                       ElevatedButton(
-                        child: const Text('リトライ'),
+                        child: Text(L10n.of(context)!.repoListPageRetry),
                         onPressed: () {
                           viewModel.retry();
                         },

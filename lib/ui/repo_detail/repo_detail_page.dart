@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:search_repo/data/model/repo.dart';
+import 'package:search_repo/gen/l10n.dart';
 
 class RepoDetailPage extends StatelessWidget {
   final Repo repo;
@@ -9,7 +10,7 @@ class RepoDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('リポジトリ詳細'),
+        title: Text(repo.fullName),
       ),
       body: Center(
         child: Column(
@@ -17,7 +18,7 @@ class RepoDetailPage extends StatelessWidget {
           children: <Widget>[
             Text(repo.name, style: const TextStyle(fontSize: 36)),
             const SizedBox(height: 16),
-            Text(repo.stargazersCount.toString() + ' Stars',
+            Text(L10n.of(context)!.repoDetailPageStars(repo.stargazersCount),
                 style: const TextStyle(fontSize: 20)),
             const SizedBox(height: 32),
             Image(
@@ -26,7 +27,7 @@ class RepoDetailPage extends StatelessWidget {
               height: 100,
             ),
             const SizedBox(height: 16),
-            Text('by ' + repo.owner.login,
+            Text(L10n.of(context)!.repoDetailPageBy(repo.owner.login),
                 style: const TextStyle(fontSize: 20)),
           ],
         ),

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:search_repo/data/model/repo.dart';
 import 'package:search_repo/data/model/user.dart';
+import 'package:search_repo/gen/l10n.dart';
 import 'package:search_repo/ui/repo_list/repo_list_page.dart';
 import 'package:search_repo/ui/repo_list/repo_list_ui_state.dart';
 import 'package:search_repo/ui/repo_list/repo_list_view_model.dart';
@@ -61,6 +62,8 @@ Widget _mockStateWidget(RepoListUiState state) {
       ),
     ],
     child: const MaterialApp(
+      locale: Locale('en_US'),
+      localizationsDelegates: L10n.localizationsDelegates,
       home: RepoListPage(),
     ),
   );

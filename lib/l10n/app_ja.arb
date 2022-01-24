@@ -1,0 +1,10 @@
+{
+  "appTitle": "Flutter Search Repo",
+
+  "repoListPageTitle": "リポジトリ検索",
+  "repoListPageHintText": "検索文字列を入力",
+  "repoListPageRetry": "リトライ",
+
+  "repoDetailPageStars": "{count, plural, other {{count}スター}}",
+  "repoDetailPageBy": "by {name}"
+}

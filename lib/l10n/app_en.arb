@@ -1,0 +1,24 @@
+{
+  "appTitle": "Flutter Search Repo",
+
+  "repoListPageTitle": "Search repository",
+  "repoListPageHintText": "Enter search keyword",
+  "repoListPageRetry": "Retry",
+
+  "repoDetailPageStars": "{count, plural, =1 {{count} Star} other {{count} Stars}}",
+  "@repoDetailPageStars": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "repoDetailPageBy": "by {name}",
+  "@repoDetailPageBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  }
+}
