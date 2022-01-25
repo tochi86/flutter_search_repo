@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:search_repo/data/model/repo.dart';
-import 'package:search_repo/data/model/search_repo_response.dart';
+import 'package:search_repo/data/repo/remote/search_repo_response.dart';
+import 'package:search_repo/model/repo/repo_id.dart';
 
 void main() {
   test('SearchRepoResponse fromJson', () {

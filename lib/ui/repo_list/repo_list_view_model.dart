@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:search_repo/data/repository/repo_repository.dart';
-import 'package:search_repo/data/repository/repo_repository_impl.dart';
+import 'package:search_repo/data/repo/repo_repository.dart';
 import 'package:search_repo/ui/repo_list/repo_list_ui_state.dart';
 
 final repoListViewModelProvider =
@@ -8,14 +7,15 @@ final repoListViewModelProvider =
         (ref) => RepoListViewModel(ref.read));
 
 class RepoListViewModel extends StateNotifier<RepoListUiState> {
-  final Reader _reader;
   RepoListViewModel(this._reader) : super(const RepoListUiState());
 
   RepoListViewModel.mock(this._reader,
       [RepoListUiState state = const RepoListUiState()])
       : super(state);
 
-  late final RepoRepository _repository = _reader(repoRepositoryProvider);
+  final Reader _reader;
+
+  late final _repository = _reader(repoRepositoryProvider);
 
   String _searchText = '';
 

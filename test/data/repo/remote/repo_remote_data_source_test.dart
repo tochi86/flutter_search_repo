@@ -1,12 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:riverpod/riverpod.dart';
-import 'package:search_repo/data/model/repo.dart';
-import 'package:search_repo/data/remote/http_client/http_client.dart';
-import 'package:search_repo/data/remote/http_client/http_client_impl.dart';
-import 'package:search_repo/data/remote/http_client/response.dart';
-import 'package:search_repo/data/remote/repo_remote_data_source.dart';
-import 'package:search_repo/data/remote/repo_remote_data_source_impl.dart';
+import 'package:search_repo/data/repo/remote/repo_remote_data_source.dart';
+import 'package:search_repo/http_client/http_client.dart';
+import 'package:search_repo/http_client/response.dart';
+import 'package:search_repo/model/repo/repo_id.dart';
 
 class _MockHttpClient extends Mock implements HttpClient {}
 

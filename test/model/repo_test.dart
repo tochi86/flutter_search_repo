@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:search_repo/data/model/repo.dart';
-import 'package:search_repo/data/model/user.dart';
+import 'package:search_repo/model/repo/repo.dart';
+import 'package:search_repo/model/repo/repo_id.dart';
+import 'package:search_repo/model/user/user_id.dart';
 
 void main() {
   test('Repo fromJson', () {

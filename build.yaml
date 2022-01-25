@@ -1,11 +1,6 @@
 targets:
   $default:
     builders:
-      freezed:
-        generate_for:
-          include:
-            - lib/ui/**/*_ui_state.dart
-            - lib/data/model/*.dart
       json_serializable:
         options:
           field_rename: snake

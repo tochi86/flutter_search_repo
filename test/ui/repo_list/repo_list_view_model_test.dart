@@ -1,10 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:search_repo/data/model/repo.dart';
-import 'package:search_repo/data/model/user.dart';
-import 'package:search_repo/data/repository/repo_repository.dart';
-import 'package:search_repo/data/repository/repo_repository_impl.dart';
+import 'package:search_repo/data/repo/repo_repository.dart';
+import 'package:search_repo/model/repo/repo.dart';
+import 'package:search_repo/model/repo/repo_id.dart';
+import 'package:search_repo/model/user/user.dart';
+import 'package:search_repo/model/user/user_id.dart';
 import 'package:search_repo/ui/repo_list/repo_list_ui_state.dart';
 import 'package:search_repo/ui/repo_list/repo_list_view_model.dart';
 

@@ -22,7 +22,7 @@ class _$RepoTearOff {
   const _$RepoTearOff();
 
   _Repo call(
-      {@_RepoIdConverter() required RepoId id,
+      {@RepoIdConverter() required RepoId id,
       required String name,
       required String fullName,
       required int stargazersCount,
@@ -46,7 +46,7 @@ const $Repo = _$RepoTearOff();
 
 /// @nodoc
 mixin _$Repo {
-  @_RepoIdConverter()
+  @RepoIdConverter()
   RepoId get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get fullName => throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ abstract class $RepoCopyWith<$Res> {
   factory $RepoCopyWith(Repo value, $Res Function(Repo) then) =
       _$RepoCopyWithImpl<$Res>;
   $Res call(
-      {@_RepoIdConverter() RepoId id,
+      {@RepoIdConverter() RepoId id,
       String name,
       String fullName,
       int stargazersCount,
@@ -134,7 +134,7 @@ abstract class _$RepoCopyWith<$Res> implements $RepoCopyWith<$Res> {
       __$RepoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@_RepoIdConverter() RepoId id,
+      {@RepoIdConverter() RepoId id,
       String name,
       String fullName,
       int stargazersCount,
@@ -192,7 +192,7 @@ class __$RepoCopyWithImpl<$Res> extends _$RepoCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Repo implements _Repo {
   const _$_Repo(
-      {@_RepoIdConverter() required this.id,
+      {@RepoIdConverter() required this.id,
       required this.name,
       required this.fullName,
       required this.stargazersCount,
@@ -201,7 +201,7 @@ class _$_Repo implements _Repo {
   factory _$_Repo.fromJson(Map<String, dynamic> json) => _$$_RepoFromJson(json);
 
   @override
-  @_RepoIdConverter()
+  @RepoIdConverter()
   final RepoId id;
   @override
   final String name;
@@ -252,7 +252,7 @@ class _$_Repo implements _Repo {
 
 abstract class _Repo implements Repo {
   const factory _Repo(
-      {@_RepoIdConverter() required RepoId id,
+      {@RepoIdConverter() required RepoId id,
       required String name,
       required String fullName,
       required int stargazersCount,
@@ -261,7 +261,7 @@ abstract class _Repo implements Repo {
   factory _Repo.fromJson(Map<String, dynamic> json) = _$_Repo.fromJson;
 
   @override
-  @_RepoIdConverter()
+  @RepoIdConverter()
   RepoId get id;
   @override
   String get name;
@@ -274,125 +274,4 @@ abstract class _Repo implements Repo {
   @override
   @JsonKey(ignore: true)
   _$RepoCopyWith<_Repo> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-class _$RepoIdTearOff {
-  const _$RepoIdTearOff();
-
-  _RepoId call({required int value}) {
-    return _RepoId(
-      value: value,
-    );
-  }
-}
-
-/// @nodoc
-const $RepoId = _$RepoIdTearOff();
-
-/// @nodoc
-mixin _$RepoId {
-  int get value => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $RepoIdCopyWith<RepoId> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $RepoIdCopyWith<$Res> {
-  factory $RepoIdCopyWith(RepoId value, $Res Function(RepoId) then) =
-      _$RepoIdCopyWithImpl<$Res>;
-  $Res call({int value});
-}
-
-/// @nodoc
-class _$RepoIdCopyWithImpl<$Res> implements $RepoIdCopyWith<$Res> {
-  _$RepoIdCopyWithImpl(this._value, this._then);
-
-  final RepoId _value;
-  // ignore: unused_field
-  final $Res Function(RepoId) _then;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$RepoIdCopyWith<$Res> implements $RepoIdCopyWith<$Res> {
-  factory _$RepoIdCopyWith(_RepoId value, $Res Function(_RepoId) then) =
-      __$RepoIdCopyWithImpl<$Res>;
-  @override
-  $Res call({int value});
-}
-
-/// @nodoc
-class __$RepoIdCopyWithImpl<$Res> extends _$RepoIdCopyWithImpl<$Res>
-    implements _$RepoIdCopyWith<$Res> {
-  __$RepoIdCopyWithImpl(_RepoId _value, $Res Function(_RepoId) _then)
-      : super(_value, (v) => _then(v as _RepoId));
-
-  @override
-  _RepoId get _value => super._value as _RepoId;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_RepoId(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_RepoId implements _RepoId {
-  const _$_RepoId({required this.value});
-
-  @override
-  final int value;
-
-  @override
-  String toString() {
-    return 'RepoId(value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _RepoId &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
-
-  @JsonKey(ignore: true)
-  @override
-  _$RepoIdCopyWith<_RepoId> get copyWith =>
-      __$RepoIdCopyWithImpl<_RepoId>(this, _$identity);
-}
-
-abstract class _RepoId implements RepoId {
-  const factory _RepoId({required int value}) = _$_RepoId;
-
-  @override
-  int get value;
-  @override
-  @JsonKey(ignore: true)
-  _$RepoIdCopyWith<_RepoId> get copyWith => throw _privateConstructorUsedError;
 }

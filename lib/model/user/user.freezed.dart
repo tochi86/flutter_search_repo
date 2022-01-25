@@ -22,7 +22,7 @@ class _$UserTearOff {
   const _$UserTearOff();
 
   _User call(
-      {@_UserIdConverter() required UserId id,
+      {@UserIdConverter() required UserId id,
       required String login,
       required String avatarUrl}) {
     return _User(
@@ -42,7 +42,7 @@ const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
-  @_UserIdConverter()
+  @UserIdConverter()
   UserId get id => throw _privateConstructorUsedError;
   String get login => throw _privateConstructorUsedError;
   String get avatarUrl => throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({@_UserIdConverter() UserId id, String login, String avatarUrl});
+  $Res call({@UserIdConverter() UserId id, String login, String avatarUrl});
 
   $UserIdCopyWith<$Res> get id;
 }
@@ -104,7 +104,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({@_UserIdConverter() UserId id, String login, String avatarUrl});
+  $Res call({@UserIdConverter() UserId id, String login, String avatarUrl});
 
   @override
   $UserIdCopyWith<$Res> get id;
@@ -146,14 +146,14 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_User implements _User {
   const _$_User(
-      {@_UserIdConverter() required this.id,
+      {@UserIdConverter() required this.id,
       required this.login,
       required this.avatarUrl});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
-  @_UserIdConverter()
+  @UserIdConverter()
   final UserId id;
   @override
   final String login;
@@ -195,14 +195,14 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {@_UserIdConverter() required UserId id,
+      {@UserIdConverter() required UserId id,
       required String login,
       required String avatarUrl}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
-  @_UserIdConverter()
+  @UserIdConverter()
   UserId get id;
   @override
   String get login;
@@ -211,125 +211,4 @@ abstract class _User implements User {
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-class _$UserIdTearOff {
-  const _$UserIdTearOff();
-
-  _UserId call({required int value}) {
-    return _UserId(
-      value: value,
-    );
-  }
-}
-
-/// @nodoc
-const $UserId = _$UserIdTearOff();
-
-/// @nodoc
-mixin _$UserId {
-  int get value => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $UserIdCopyWith<UserId> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserIdCopyWith<$Res> {
-  factory $UserIdCopyWith(UserId value, $Res Function(UserId) then) =
-      _$UserIdCopyWithImpl<$Res>;
-  $Res call({int value});
-}
-
-/// @nodoc
-class _$UserIdCopyWithImpl<$Res> implements $UserIdCopyWith<$Res> {
-  _$UserIdCopyWithImpl(this._value, this._then);
-
-  final UserId _value;
-  // ignore: unused_field
-  final $Res Function(UserId) _then;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$UserIdCopyWith<$Res> implements $UserIdCopyWith<$Res> {
-  factory _$UserIdCopyWith(_UserId value, $Res Function(_UserId) then) =
-      __$UserIdCopyWithImpl<$Res>;
-  @override
-  $Res call({int value});
-}
-
-/// @nodoc
-class __$UserIdCopyWithImpl<$Res> extends _$UserIdCopyWithImpl<$Res>
-    implements _$UserIdCopyWith<$Res> {
-  __$UserIdCopyWithImpl(_UserId _value, $Res Function(_UserId) _then)
-      : super(_value, (v) => _then(v as _UserId));
-
-  @override
-  _UserId get _value => super._value as _UserId;
-
-  @override
-  $Res call({
-    Object? value = freezed,
-  }) {
-    return _then(_UserId(
-      value: value == freezed
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_UserId implements _UserId {
-  const _$_UserId({required this.value});
-
-  @override
-  final int value;
-
-  @override
-  String toString() {
-    return 'UserId(value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _UserId &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
-
-  @JsonKey(ignore: true)
-  @override
-  _$UserIdCopyWith<_UserId> get copyWith =>
-      __$UserIdCopyWithImpl<_UserId>(this, _$identity);
-}
-
-abstract class _UserId implements UserId {
-  const factory _UserId({required int value}) = _$_UserId;
-
-  @override
-  int get value;
-  @override
-  @JsonKey(ignore: true)
-  _$UserIdCopyWith<_UserId> get copyWith => throw _privateConstructorUsedError;
 }

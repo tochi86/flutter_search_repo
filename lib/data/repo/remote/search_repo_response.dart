@@ -1,7 +1,5 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'repo.dart';
+import 'package:search_repo/model/repo/repo.dart';
 
 part 'search_repo_response.freezed.dart';
 part 'search_repo_response.g.dart';
@@ -14,5 +12,5 @@ class SearchRepoResponse with _$SearchRepoResponse {
   }) = _SearchRepoResponse;
 
   factory SearchRepoResponse.fromJson(Map<String, dynamic> json) =>
-			_$SearchRepoResponseFromJson(json);
+      _$SearchRepoResponseFromJson(json);
 }
