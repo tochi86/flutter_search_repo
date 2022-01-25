@@ -1,5 +1,6 @@
 .PHONY: build
 build:
+	fvm install
 	fvm flutter pub get
 	fvm flutter gen-l10n
 	fvm flutter packages pub run build_runner build --delete-conflicting-outputs

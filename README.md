@@ -9,15 +9,15 @@ iOSとAndroidで動きます。
 
 ## 環境構築
 
-FVMをインストール
+[FVM](https://fvm.app/)をインストール
 ```
 brew tap leoafarias/fvm
 brew install fvm
 ```
 
-Flutter SDKをインストール
+コマンドを実行
 ```
-fvm install
+make build
 ```
 
 ## アーキテクチャ
