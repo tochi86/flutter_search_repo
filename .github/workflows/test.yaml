@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: 2.10.1
+          flutter-version: 2.10.2
           channel: 'stable'
           cache: true
           cache-key: flutter
