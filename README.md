@@ -9,6 +9,13 @@ iOSとAndroidで動きます。
 
 ## 環境構築
 
+[rbenv](https://github.com/rbenv/rbenv)を使って、[.ruby-version](.ruby-version)に書かれているバージョンのRubyをインストール
+```
+brew install rbenv ruby-build
+rbenv init
+rbenv install
+```
+
 [FVM](https://fvm.app/)をインストール
 ```
 brew tap leoafarias/fvm
