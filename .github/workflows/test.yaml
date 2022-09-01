@@ -1,23 +1,20 @@
 name: Test
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: subosito/flutter-action@v2
+      - uses: ruby/setup-ruby@v1
+      - uses: actions/cache@v3
         with:
-          flutter-version: 3.3.0
-          channel: 'stable'
-          cache: true
-          cache-key: flutter
-          cache-path: ${{ runner.tool_cache }}/flutter
-      - run: flutter pub get
-      - run: flutter gen-l10n
-      - run: flutter packages pub run build_runner build --delete-conflicting-outputs
-      - run: flutter test
+          path: ios/vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('ios/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - run: brew tap leoafarias/fvm
+      - run: brew install fvm
+      - run: make build
+      - run: make test
